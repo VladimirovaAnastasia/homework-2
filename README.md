@@ -19,3 +19,12 @@
 
 Настройки - [http://localhost:3000/settings](http://localhost:3000/settings)
 
+## Список используемых пакетов
+
+___@craco/craco___ -  для настройки path aliases приложения, созданного через cretae-react-app;
+
+
+___node-sass___ - позволяет удобно использовать переменные и миксины в стилях;
+
+
+___classnames___ - для работы с классами.
