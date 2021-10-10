@@ -25,5 +25,6 @@ module.exports = {
         'react/prop-types': 0,
         'no-unused-vars': 0,
         'no-undef': 0,
+        "prettier/prettier": ["error", { "endOfLine": "auto" }]
     },
 };
