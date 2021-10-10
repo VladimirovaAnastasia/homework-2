@@ -13,7 +13,7 @@ const postBuild = (req) => {
 	const formatDate = format(date, 'd LLL, kk:mm', {locale: ruLocale});
 
 	const randomStatusIndex = Math.floor(Math.random() * statuses.length);
-	
+
 	const build = {
 		...buildsTemplate,
 		status: statuses[randomStatusIndex],

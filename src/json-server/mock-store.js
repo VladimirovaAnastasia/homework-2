@@ -12,7 +12,7 @@ module.exports = {
 	},
 
 	clearBuilds() {
-		this.builds = []
+		this.builds = [];
 	},
 
 	setLastBuildNumber() {

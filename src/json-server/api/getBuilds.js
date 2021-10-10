@@ -7,8 +7,7 @@ const getBuilds = (req) => {
 
 	const initBuild = [{...buildTemplate, branch: branch || 'master'}];
 
-
-	if (mockStore.repository && repository!== mockStore.repository) {
+	if (mockStore.repository && repository !== mockStore.repository) {
 		mockStore.clearBuilds();
 	}
 	mockStore.setRepository(repository);

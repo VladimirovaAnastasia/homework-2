@@ -1,5 +1,1 @@
-module.exports = [
-    'fail',
-    'wait',
-    'done'
-];
+module.exports = ['fail', 'wait', 'done'];
