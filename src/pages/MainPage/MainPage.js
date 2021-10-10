@@ -54,7 +54,7 @@ const MainPage = () => {
 
 	const isSettings = !localStorage.getItem('isEmpty');
 
-	const [cardsPerPage, setCardsPerPage] = useState(window.innerWidth <= 768 ? 6 : 9);
+	const cardsPerPage = window.innerWidth <= 768 ? 6 : 9;
 	const [isOpenModal, setOpenModal] = useState(false);
 	const [isLoadingModal, setLoadingModal] = useState(false);
 	const [showedCardsCount, setShowedCardsCount] = useState(cardsPerPage);
