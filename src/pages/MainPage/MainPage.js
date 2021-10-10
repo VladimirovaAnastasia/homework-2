@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {EmptySettings} from './components/EmptySettings';
@@ -10,6 +10,7 @@ import {Header} from '@/components/Header';
 import {Modal} from '@/components/Modal';
 import {fetchBuilds, runBuild} from '@/store/actions/builds';
 import {Loader} from '../../components/Loader';
+import {Error} from '../../components/Error';
 
 import styles from './MainPage.module.scss';
 
@@ -23,10 +24,6 @@ const MainPage = () => {
 
 	const [isOpenModal, setOpenModal] = useState(false);
 	const [showedCardsCount, setShowedCardsCount] = useState(cardsPerPage);
-
-	useLayoutEffect(() => {
-		dispatch(fetchBuilds());
-	}, []);
 
 	const handleClick = () => {
 		setOpenModal((prev) => !prev);
@@ -51,7 +48,7 @@ const MainPage = () => {
 	};
 
 	if (isError) {
-		return <p>Что-то пошло не так...</p>;
+		return <Error />;
 	}
 
 	if (isLoading && !isOpenModal) {

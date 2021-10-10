@@ -5,16 +5,19 @@ import {LabelNumberInput} from '@/components/LabelNumberInput';
 import {LabelTextInput} from '@/components/LabelTextInput';
 import {ButtonMD} from '@/components/Button';
 import {LabelText} from '@/components/LabelText';
+import {Error} from '../../../../components/Error';
 import useInput from '@/hooks/useInput';
+import {setSettings} from '@/store/actions/settings';
+import {fetchBuilds} from '@/store/actions/builds';
 
 import styles from './SettingsForm.module.scss';
-import {setSettings} from '@/store/actions/settings';
 
 const SettingsForm = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 
 	const settings = useSelector((state) => state.settings);
+	const {loading: isLoading, error: isError} = useSelector((state) => state.builds);
 
 	const repository = useInput(settings.repository, {isEmpty: true});
 	const command = useInput(settings.command, {isEmpty: true});
@@ -23,8 +26,9 @@ const SettingsForm = () => {
 
 	const [onValidation, setValidation] = useState(false);
 
-	const openMainPage = () => {
-		history.push('/');
+	const openMainPage = async () => {
+		await dispatch(fetchBuilds());
+		!isError && history.push('/');
 	};
 
 	const save = () => {
@@ -45,6 +49,10 @@ const SettingsForm = () => {
 	const cancel = () => {
 		openMainPage();
 	};
+
+	if (isError) {
+		return <Error />;
+	}
 
 	return (
 		<div className={styles.settingsForm}>
@@ -82,10 +90,16 @@ const SettingsForm = () => {
 			/>
 
 			<div className={styles.buttons}>
-				<ButtonMD handleClick={save} type="action" hasNextButton={true} isMobileFull={true}>
+				<ButtonMD
+					handleClick={save}
+					type="action"
+					hasNextButton={true}
+					isMobileFull={true}
+					isLoading={isLoading}
+				>
 					Save
 				</ButtonMD>
-				<ButtonMD handleClick={cancel} type="control" isMobileFull={true}>
+				<ButtonMD handleClick={cancel} type="control" isMobileFull={true} isLoading={isLoading}>
 					Cancel
 				</ButtonMD>
 			</div>
