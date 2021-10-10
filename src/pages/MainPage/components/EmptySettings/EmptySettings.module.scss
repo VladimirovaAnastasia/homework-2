@@ -1,0 +1,22 @@
+@import "@/variables";
+
+.emptySettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.img {
+  width: 124px;
+  height: 124px;
+  margin-bottom: 32px;
+}
+
+.text {
+  margin-bottom: 24px;
+  text-align: center;
+  color: $text-default;
+}
+

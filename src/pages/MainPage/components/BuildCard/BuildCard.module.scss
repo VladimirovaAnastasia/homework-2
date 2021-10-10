@@ -1,0 +1,188 @@
+@import "@/variables";
+
+.buildCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 1px rgba(67, 68, 69, 0.3), 0px 1px 1px rgba(67, 68, 69, 0.3);
+  border-radius: 6px;
+  padding: 12px 24px;
+  margin-bottom: 8px;
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    padding: 12px 16px;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 1px rgba(67, 68, 69, 0.3), 0px 2px 8px rgba(67, 68, 69, 0.3);
+    cursor: pointer;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.build {
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 32px;
+
+    @media (max-width: $mobile) {
+      padding-left: 24px;
+    }
+  }
+
+  .description {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 8px;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+    }
+  }
+
+  .number {
+    position: relative;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: $green;
+    margin-right: 4px;
+
+    @media (max-width: $mobile) {
+      font-size: 16px;
+      line-height: 16px;
+      margin-bottom: 8px;
+    }
+
+    &::before {
+      content: '';
+      background-size: contain;
+      position: absolute;
+      top: 0;
+      left: -32px;
+      width: 24px;
+      height: 24px;
+
+      @media (max-width: $mobile) {
+        width: 16px;
+        height: 16px;
+        left: -24px;
+      }
+    }
+  }
+
+  .done {
+    color: $green;
+
+    &::before {
+      background-image: url("./icons/done.svg");
+    }
+  }
+
+  .fail {
+    color: $red;
+
+    &::before {
+      background-image: url("./icons/fail.svg");
+    }
+  }
+
+  .wait {
+    color: $orange;
+
+    &::before {
+      background-image: url("./icons/wait.svg");
+    }
+  }
+
+  .additionalInfo {
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      margin-bottom: 8px;
+    }
+  }
+
+  .branch {
+    display: flex;
+    flex-direction: row;
+    margin-right: 8px;
+  }
+
+  .branchName {
+    &::before {
+      content: url("./icons/code-commit.svg");
+      position: relative;
+      top: 3px;
+      margin-right: 4px;
+      opacity: 0.3;
+    }
+  }
+
+  .time {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: $text-minor;
+
+    @media (max-width: $mobile) {
+      flex-direction: row;
+      justify-content: flex-start;
+      padding: 8px 0 0 24px;
+      border-top: 1px #F0F2F3 solid;
+    }
+  }
+
+  .date {
+
+    @media (max-width: $mobile) {
+      margin-right: 8px;
+    }
+
+    &::before {
+      content: url("./icons/calendar.svg");
+      position: relative;
+      top: 3px;
+      margin-right: 4px;
+      opacity: 0.3;
+    }
+  }
+
+  .duration {
+    &::before {
+      content: url("./icons/stopwatch.svg");
+      position: relative;
+      top: 3px;
+      margin-right: 4px;
+      opacity: 0.3;
+    }
+  }
+}
+
+.commitMessage {
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.commitAuthor {
+  &::before {
+    content: url("./icons/user.svg");
+    position: relative;
+    top: 3px;
+    margin-right: 4px;
+    opacity: 0.3;
+  }
+}
+
+.commitHash {
+  color: $text-minor;
+}

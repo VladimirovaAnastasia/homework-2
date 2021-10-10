@@ -1,0 +1,12 @@
+@import "@/variables";
+
+.text {
+  font-size: 13px;
+  line-height: 18px;
+  color: $text-minor;
+  margin: 8px 0 0 0;
+}
+
+.textMain {
+  color: $text-default
+}
