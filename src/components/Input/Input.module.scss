@@ -45,3 +45,11 @@
 .error {
   border-color: $red;
 }
+
+.errorText {
+  position: absolute;
+  color: $red;
+  right: 0;
+  font-size: 11px;
+  top: 43px;
+}
