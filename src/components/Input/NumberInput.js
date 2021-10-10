@@ -3,14 +3,13 @@ import InputBase from './InputBase';
 
 import styles from './Input.module.scss';
 
-const pattern = /[^0-9]/g;
+const pattern = /\D/g;
 
 const NumberInput = ({value, handleChange, width, unit, placeholder, maxLength}) => {
 	const handleNumberInputChange = (value) => {
-		if (pattern.test(value)) {
-			return;
+		if (!pattern.test(value)) {
+			handleChange(value);
 		}
-		handleChange(value);
 	};
 
 	return (
