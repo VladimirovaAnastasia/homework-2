@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {LabelNumberInput} from '@/components/LabelNumberInput';
 import {LabelTextInput} from '@/components/LabelTextInput';
@@ -7,9 +8,11 @@ import {LabelText} from '@/components/LabelText';
 import useInput from '@/hooks/useInput';
 
 import styles from './SettingsForm.module.scss';
+import {setSettings} from '@/store/actions/settings';
 
 const SettingsForm = () => {
 	const history = useHistory();
+	const dispatch = useDispatch();
 
 	const repository = useInput('', {isEmpty: true});
 	const command = useInput('', {isEmpty: true});
@@ -25,6 +28,14 @@ const SettingsForm = () => {
 	const save = () => {
 		setValidation(true);
 		if (!repository.isEmpty && !command.isEmpty) {
+			dispatch(
+				setSettings({
+					repository: repository.value,
+					command: command.value,
+					branch: branch.value,
+					minutes: minutes.value,
+				})
+			);
 			openMainPage();
 		}
 	};

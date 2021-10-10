@@ -1,19 +1,13 @@
 .loader {
   position: relative;
-  top: calc(50% - 140px);
-  transform: translateY(-50%);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
 
   svg {
-    height: 50px;
-    width: 50px;
-
-    animation-name: rotation;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    height: 100px;
+    width: 100px;
   }
 }
 

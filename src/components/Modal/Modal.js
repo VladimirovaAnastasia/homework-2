@@ -15,7 +15,7 @@ const Modal = ({handleSave, handleClose, isLoading}) => {
 	const handleSaveClick = () => {
 		setValidation(true);
 		if (!hash.isEmpty && !hash.minLengthError) {
-			handleSave();
+			handleSave(hash.value);
 		}
 	};
 

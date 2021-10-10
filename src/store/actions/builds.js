@@ -8,26 +8,25 @@ import {
 	RUN_BUILD_ERROR,
 } from './actionTypes';
 
-export function fetchBuilds() {
+export const fetchBuilds = () => {
 	return async (dispatch, getState) => {
 		dispatch(fetchBuildsStart());
 		try {
-			const response = await axios.post('http://localhost:8000/builds', getState().settings);
+			const response = await axios.post('http://localhost:5000/builds', getState().settings);
+			const {builds, repository} = response.data;
 
-			const builds = response.data;
-
-			dispatch(fetchBuildsSuccess(builds));
+			dispatch(fetchBuildsSuccess(builds, repository));
 		} catch (e) {
 			dispatch(fetchBuildsError(e));
 		}
 	};
-}
+};
 
 export const runBuild = (hash) => {
 	return async (dispatch) => {
 		dispatch(runBuildStart());
 		try {
-			const response = await axios.post('/builds.json', hash);
+			await axios.post('http://localhost:5000/build', {hash: hash});
 			dispatch(runBuildSuccess());
 		} catch (e) {
 			dispatch(runBuildError(e));
@@ -61,10 +60,11 @@ export function fetchBuildsStart() {
 	};
 }
 
-export function fetchBuildsSuccess(builds) {
+export function fetchBuildsSuccess(builds, repository) {
 	return {
 		type: FETCH_BUILDS_SUCCESS,
 		builds,
+		repository,
 	};
 }
 

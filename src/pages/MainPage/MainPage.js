@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {EmptySettings} from './components/EmptySettings';
 import {BuildCard} from './components/BuildCard';
@@ -7,57 +8,25 @@ import {ReactComponent as SettingsSvg} from '@/assets/icons/settings.svg';
 import {ReactComponent as BuildSvg} from '@/assets/icons/play.svg';
 import {Header} from '@/components/Header';
 import {Modal} from '@/components/Modal';
+import {fetchBuilds, runBuild} from '@/store/actions/builds';
 
 import styles from './MainPage.module.scss';
-
-const buildCards = [
-	{
-		status: 'fail',
-	},
-	{
-		status: 'done',
-	},
-	{
-		status: 'wait',
-	},
-	{
-		status: 'fail',
-	},
-	{
-		status: 'done',
-	},
-	{
-		status: 'wait',
-	},
-	{
-		status: 'fail',
-	},
-	{
-		status: 'done',
-	},
-	{
-		status: 'wait',
-	},
-	{
-		status: 'fail',
-	},
-	{
-		status: 'done',
-	},
-	{
-		status: 'wait',
-	},
-];
+import {Loader} from '../../components/Loader';
 
 const MainPage = () => {
 	const history = useHistory();
+	const dispatch = useDispatch();
 
-	const isSettings = !localStorage.getItem('isEmpty');
+	const cardsPerPage = window.innerWidth <= 768 ? 6 : 9;
 
-	const [cardsPerPage, setCardsPerPage] = useState(window.innerWidth <= 768 ? 6 : 9);
+	const {loading: isLoading, error: isError, items: buildCards, repository} = useSelector((state) => state.builds);
+
 	const [isOpenModal, setOpenModal] = useState(false);
-	const [isLoadingModal, setLoadingModal] = useState(false);
 	const [showedCardsCount, setShowedCardsCount] = useState(cardsPerPage);
+
+	useLayoutEffect(() => {
+		dispatch(fetchBuilds());
+	}, []);
 
 	const handleClick = () => {
 		setOpenModal((prev) => !prev);
@@ -67,12 +36,10 @@ const MainPage = () => {
 		setOpenModal((prev) => !prev);
 	};
 
-	const handleSaveClick = () => {
-		setLoadingModal(true);
-		setTimeout(() => {
-			setLoadingModal(false);
-			setOpenModal((prev) => !prev);
-		}, 1000);
+	const handleSaveClick = async (value) => {
+		await dispatch(runBuild(value));
+		setOpenModal((prev) => !prev);
+		dispatch(fetchBuilds());
 	};
 
 	const openSettingsPage = () => {
@@ -83,12 +50,20 @@ const MainPage = () => {
 		setShowedCardsCount((prev) => prev + cardsPerPage);
 	};
 
+	if (isError) {
+		return <p>Что-то пошло не так...</p>;
+	}
+
+	if (isLoading && !isOpenModal) {
+		return <Loader />;
+	}
+
 	return (
 		<>
 			<Header>
-				{isSettings ? (
+				{repository ? (
 					<>
-						<h1 className={styles.headerTitle}>philip1967/my-awesome-repo</h1>
+						<h1 className={styles.headerTitle}>{repository}</h1>
 						<div className={styles.headerButtons}>
 							<ButtonSM icon={<BuildSvg />} handleClick={handleClick} hasNextButton={true}>
 								Run Build
@@ -105,15 +80,13 @@ const MainPage = () => {
 					</>
 				)}
 			</Header>
-			{isOpenModal && (
-				<Modal handleClose={handleCloseClick} handleSave={handleSaveClick} isLoading={isLoadingModal} />
-			)}
+			{isOpenModal && <Modal handleClose={handleCloseClick} handleSave={handleSaveClick} isLoading={isLoading} />}
 
-			{isSettings ? (
+			{repository && buildCards.length > 0 ? (
 				<div className={styles.mainPage}>
 					{buildCards.map(
 						(buildCard, index) =>
-							index < showedCardsCount && <BuildCard key={buildCard + index} status={buildCard.status} />
+							index < showedCardsCount && <BuildCard key={buildCard + index} data={buildCard} />
 					)}
 					{buildCards.length > showedCardsCount && (
 						<div className={styles.showMoreButton}>
