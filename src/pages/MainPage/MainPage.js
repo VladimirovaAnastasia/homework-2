@@ -9,9 +9,9 @@ import {ReactComponent as BuildSvg} from '@/assets/icons/play.svg';
 import {Header} from '@/components/Header';
 import {Modal} from '@/components/Modal';
 import {fetchBuilds, runBuild} from '@/store/actions/builds';
+import {Loader} from '../../components/Loader';
 
 import styles from './MainPage.module.scss';
-import {Loader} from '../../components/Loader';
 
 const MainPage = () => {
 	const history = useHistory();
