@@ -1,10 +1,10 @@
 import {SET_SETTINGS} from '../actions/actionTypes';
 
 const initialState = {
-	repository: null,
-	branch: null,
-	command: null,
-	minutes: 10,
+	repository: '',
+	branch: '',
+	command: '',
+	minutes: '',
 };
 
 export default function createReducer(state = initialState, action) {

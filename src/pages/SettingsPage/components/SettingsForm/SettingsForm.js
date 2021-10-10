@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {LabelNumberInput} from '@/components/LabelNumberInput';
 import {LabelTextInput} from '@/components/LabelTextInput';
@@ -14,10 +14,12 @@ const SettingsForm = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 
-	const repository = useInput('', {isEmpty: true});
-	const command = useInput('', {isEmpty: true});
-	const branch = useInput('');
-	const minutes = useInput('');
+	const settings = useSelector((state) => state.settings);
+
+	const repository = useInput(settings.repository, {isEmpty: true});
+	const command = useInput(settings.command, {isEmpty: true});
+	const branch = useInput(settings.branch);
+	const minutes = useInput(settings.minutes);
 
 	const [onValidation, setValidation] = useState(false);
 
