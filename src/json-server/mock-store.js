@@ -1,14 +1,18 @@
 module.exports = {
 	builds: [],
-	settings: {},
+	repository: null,
 	lastBuildNumber: 1234,
 
 	setBuild(build) {
 		this.builds.push(build);
 	},
 
-	setSettings(settings) {
-		this.settings = settings;
+	setRepository(repository) {
+		this.repository = repository;
+	},
+
+	clearBuilds() {
+		this.builds = []
 	},
 
 	setLastBuildNumber() {
