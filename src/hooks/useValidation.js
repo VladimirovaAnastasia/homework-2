@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 export default function useValidation(value, validations) {
 	const [isEmpty, setEmpty] = useState(true);
 	const [minLengthError, setMinLengthError] = useState(false);
+	const errorText = {isEmpty: 'Required field', minLength: `You need min ${validations?.minLength || 0} symbols`};
 
 	useEffect(() => {
 		for (let validation in validations) {
@@ -18,7 +19,7 @@ export default function useValidation(value, validations) {
 	}, [value]);
 
 	return {
-		isEmpty,
-		minLengthError,
+		isEmpty: isEmpty && errorText.isEmpty,
+		minLengthError: minLengthError && errorText.minLength,
 	};
 }
