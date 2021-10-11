@@ -4,6 +4,7 @@ import {MainPage} from './pages/MainPage';
 import {SettingsPage} from './pages/SettingsPage';
 import {NotFoundPage} from './pages/NotFoundPage';
 import {Footer} from './components/Footer';
+import {LINKS} from './const';
 
 function App() {
 	return (
@@ -17,7 +18,7 @@ function App() {
 							<Route path="/settings" component={SettingsPage} />
 							<Route render={() => <Redirect to="/404" />} />
 						</Switch>
-						<Footer />
+						<Footer links={LINKS} copyright="Anastasiya Vladimirova" />
 					</div>
 				</Route>
 			</Switch>

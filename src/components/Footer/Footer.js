@@ -3,11 +3,11 @@ import {Menu} from '../Menu';
 
 import styles from './Footer.module.scss';
 
-const Footer = () => (
+const Footer = ({links, copyright}) => (
 	<div className={styles.footerContainer}>
 		<div className={styles.footer}>
-			<Menu />
-			<p className={styles.footerText}>© 2021 Anastasiya Vladimirova</p>
+			<Menu links={links} />
+			<p className={styles.footerText}>© 2021 {copyright}</p>
 		</div>
 	</div>
 );
