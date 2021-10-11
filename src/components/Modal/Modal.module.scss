@@ -1,3 +1,5 @@
+@import "@/themes";
+@import "@/mixins";
 @import "@/variables";
 
 .modalContainer {
@@ -17,10 +19,12 @@
 .Modal {
   width: 485px;
   padding: 20px 18px;
-  background: #FFFFFF;
   box-shadow: 0px 0px 1px rgba(67, 68, 69, 0.3), 0px 6px 16px rgba(67, 68, 69, 0.3);
   border-radius: 4px;
   z-index: 3;
+  @include themify($themes) {
+    background-color: themed('backgroundModalColor');
+  }
 
   @media (max-width: $mobile) {
     width: 288px;

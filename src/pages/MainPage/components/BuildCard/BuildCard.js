@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import {formatDate} from '@/utils/formatDate';
 
 import styles from './BuildCard.module.scss';
 
-const BuildCard = ({data}) => {
-	const {status, number, message, branch, hash, author, date, duration} = data;
+const BuildCard = ({build}) => {
+	const {status, number, message, branch, hash, author, date, duration} = build;
 	return (
 		<div className={classNames(styles.buildCard, styles.build)}>
 			<div className={styles.info}>
@@ -24,7 +25,7 @@ const BuildCard = ({data}) => {
 			</div>
 
 			<div className={styles.time}>
-				<p className={styles.date}>{date}</p>
+				<p className={styles.date}>{formatDate(date)}</p>
 				<p className={styles.duration}>{duration}</p>
 			</div>
 		</div>

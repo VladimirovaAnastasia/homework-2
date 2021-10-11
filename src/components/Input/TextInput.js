@@ -4,7 +4,7 @@ import {ReactComponent as CloseButtonSvg} from '@/assets/icons/close-button.svg'
 
 import styles from './Input.module.scss';
 
-const TextInput = ({value, handleChange, placeholder, width, maxLength, error}) => {
+const TextInput = ({value, handleChange, placeholder, width, maxLength, error, autoFocus}) => {
 	const clearField = () => {
 		handleChange('');
 	};
@@ -15,6 +15,7 @@ const TextInput = ({value, handleChange, placeholder, width, maxLength, error}) 
 				value={value}
 				width={width}
 				maxLength={maxLength}
+				autoFocus={autoFocus}
 				handleChange={handleChange}
 				placeholder={placeholder}
 				error={error}

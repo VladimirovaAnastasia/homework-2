@@ -1,8 +1,11 @@
+@import "@/themes";
 @import "@/mixins";
 @import "@/variables";
 
 .footerContainer {
-  background-color: $footer-bg;
+  @include themify($themes) {
+    background-color: themed('backgroundFooterColor');
+  }
 }
 
 .footer {

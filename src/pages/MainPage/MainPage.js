@@ -8,6 +8,8 @@ import {ReactComponent as SettingsSvg} from '@/assets/icons/settings.svg';
 import {ReactComponent as BuildSvg} from '@/assets/icons/play.svg';
 import {Header} from '@/components/Header';
 import {Modal} from '@/components/Modal';
+import {ThemeSwitcher} from '@/components/ThemeSwitcher';
+import {BUILDS} from '@/const';
 import {fetchBuilds, runBuild} from '@/store/actions/builds';
 import {Loader} from '../../components/Loader';
 import {Error} from '../../components/Error';
@@ -19,6 +21,7 @@ const MainPage = () => {
 	const dispatch = useDispatch();
 
 	const cardsPerPage = window.innerWidth <= 768 ? 6 : 9;
+	const [isLightTheme, setLightTheme] = useState(document.body.className === 'theme-light');
 
 	const {loading: isLoading, error: isError, items: buildCards, repository} = useSelector((state) => state.builds);
 
@@ -55,6 +58,16 @@ const MainPage = () => {
 		return <Loader />;
 	}
 
+	const handleSwitchTheme = () => {
+		if (!isLightTheme) {
+			document.body.className = 'theme-light';
+		} else {
+			document.body.className = 'theme-dark';
+		}
+
+		setLightTheme((prev) => !prev);
+	};
+
 	return (
 		<>
 			<Header>
@@ -62,7 +75,8 @@ const MainPage = () => {
 					<>
 						<h1 className={styles.headerTitle}>{repository}</h1>
 						<div className={styles.headerButtons}>
-							<ButtonSM icon={<BuildSvg />} handleClick={handleClick} hasNextButton={true}>
+							<ThemeSwitcher isLight={isLightTheme} handleClick={handleSwitchTheme} />
+							<ButtonSM icon={<BuildSvg />} handleClick={handleClick} hasNextButton>
 								Run Build
 							</ButtonSM>
 							<ButtonSM icon={<SettingsSvg />} handleClick={openSettingsPage} />
@@ -74,6 +88,7 @@ const MainPage = () => {
 						<ButtonSM icon={<SettingsSvg />} handleClick={openSettingsPage}>
 							Settings
 						</ButtonSM>
+						<ThemeSwitcher isLight={isLightTheme} handleClick={handleSwitchTheme} />
 					</>
 				)}
 			</Header>

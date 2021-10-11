@@ -1,3 +1,5 @@
+@import "@/themes";
+@import "@/mixins";
 @import "@/variables";
 
 .button {
@@ -12,6 +14,18 @@
   color: $text-default;
   border-radius: 5px;
   box-sizing: border-box;
+  @include themify($themes) {
+    background-color: themed('buttonBackgroundDefault');
+  }
+
+  &:hover {
+    background-color: $btn-cancel-hover;
+  }
+
+  &:focus {
+    background-color: $btn-cancel;
+    border: 2px $btn-cancel-border solid;
+  }
 }
 
 .buttonText {
@@ -19,26 +33,17 @@
 }
 
 .action {
-  background-color: $btn-action;
+  @include themify($themes) {
+    background-color: themed('buttonBackgroundAction');
+  }
 
-  &:active {
+  &:hover {
     background-color: $btn-action-hover;
   }
 
   &:focus {
+    background-color: $btn-action;
     border: 2px $btn-action-border solid;
-  }
-}
-
-.control {
-  background-color: $btn-cancel;
-
-  &:active {
-    background-color: $btn-cancel-hover;
-  }
-
-  &:focus {
-    border: 2px $btn-cancel-border solid;
   }
 }
 
@@ -72,7 +77,6 @@
 
   @media (max-width: $mobile) {
     margin-bottom: 8px;
-    margin-right: 0;
   }
 }
 
