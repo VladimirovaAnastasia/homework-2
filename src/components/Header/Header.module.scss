@@ -1,6 +1,7 @@
 @import "@/mixins";
 
 .header {
+  position: relative;
   @include wrapper;
   display: flex;
   flex-direction: row;
