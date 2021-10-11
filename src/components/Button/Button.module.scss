@@ -48,8 +48,10 @@
 }
 
 .disabled {
-  background-color: $btn-disabled;
-  color: $btn-disabled-text;
+  @include themify($themes) {
+    background-color: themed('buttonBackgroundDisabled');
+    color: themed('buttonTextDisabled');
+  }
 
   &:focus {
     border: 2px $btn-disabled solid;
