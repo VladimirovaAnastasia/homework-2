@@ -8,6 +8,8 @@ import useInput from '@/hooks/useInput';
 import styles from './Modal.module.scss';
 
 const Modal = ({handleSave, handleClose, isLoading}) => {
+	const modalContainer = React.createRef();
+
 	const hash = useInput('', {isEmpty: true, minLength: 4});
 
 	const [onValidation, setValidation] = useState(false);
@@ -32,8 +34,6 @@ const Modal = ({handleSave, handleClose, isLoading}) => {
 		};
 	}, []);
 
-	let modalContainer = React.createRef();
-
 	const handleModalContainerClick = (event) => {
 		if (modalContainer.current === event.target) {
 			handleClose();
@@ -49,6 +49,7 @@ const Modal = ({handleSave, handleClose, isLoading}) => {
 					className="textMain"
 				/>
 				<LabelTextInput
+					autoFocus
 					value={hash.value}
 					handleChange={hash.onChange}
 					placeholder="Commit hash"

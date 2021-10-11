@@ -2,7 +2,17 @@ import React from 'react';
 import {LabelComponent} from '../LabelComponent';
 import {TextInput} from '../Input';
 
-const LabelTextInput = ({value, handleChange, placeholder, width, maxLength, label, error, isRequired = false}) => {
+const LabelTextInput = ({
+	value,
+	handleChange,
+	placeholder,
+	width,
+	maxLength,
+	label,
+	error,
+	isRequired = false,
+	autoFocus,
+}) => {
 	return (
 		<LabelComponent label={label} direction="col" isRequired={isRequired}>
 			<TextInput
@@ -13,6 +23,7 @@ const LabelTextInput = ({value, handleChange, placeholder, width, maxLength, lab
 				placeholder={placeholder}
 				error={error}
 				isRequired={isRequired}
+				autoFocus={autoFocus}
 			/>
 		</LabelComponent>
 	);
