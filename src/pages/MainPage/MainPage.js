@@ -84,7 +84,7 @@ const MainPage = () => {
 				<Modal handleClose={handleCloseClick} handleSave={handleSaveClick} isLoading={isLoadingModal} />
 			)}
 
-			{!isSettings ? (
+			{isSettings ? (
 				<div className={styles.mainPage}>
 					{BUILDS.map(
 						(buildCard, index) =>
