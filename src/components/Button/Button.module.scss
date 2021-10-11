@@ -48,6 +48,7 @@
 }
 
 .disabled {
+  cursor: not-allowed;
   @include themify($themes) {
     background-color: themed('buttonBackgroundDisabled');
     color: themed('buttonTextDisabled');
