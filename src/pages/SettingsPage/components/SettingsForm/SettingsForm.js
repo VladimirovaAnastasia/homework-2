@@ -17,6 +17,7 @@ const SettingsForm = () => {
 	const minutes = useInput('');
 
 	const [onValidation, setValidation] = useState(false);
+	const [isLoading, setLoading] = useState(false);
 
 	const openMainPage = () => {
 		history.push('/');
@@ -24,8 +25,12 @@ const SettingsForm = () => {
 
 	const save = () => {
 		setValidation(true);
+		setLoading(true);
 		if (!repository.isEmpty && !command.isEmpty) {
-			openMainPage();
+			setTimeout(() => {
+				setLoading(false);
+				openMainPage();
+			}, 1000);
 		}
 	};
 
@@ -69,10 +74,16 @@ const SettingsForm = () => {
 			/>
 
 			<div className={styles.buttons}>
-				<ButtonMD handleClick={save} type="action" hasNextButton={true} isMobileFull={true}>
+				<ButtonMD
+					handleClick={save}
+					type="action"
+					hasNextButton={true}
+					isMobileFull={true}
+					isLoading={isLoading}
+				>
 					Save
 				</ButtonMD>
-				<ButtonMD handleClick={cancel} isMobileFull={true}>
+				<ButtonMD handleClick={cancel} isMobileFull={true} isLoading={isLoading}>
 					Cancel
 				</ButtonMD>
 			</div>
