@@ -44,7 +44,7 @@ const Modal = ({handleSave, handleClose, isLoading}) => {
 					>
 						Run Build
 					</ButtonMD>
-					<ButtonMD handleClick={handleClose} type="control" isMobileFull={true} isLoading={isLoading}>
+					<ButtonMD handleClick={handleClose} isMobileFull={true} isLoading={isLoading}>
 						Cancel
 					</ButtonMD>
 				</div>

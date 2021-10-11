@@ -72,7 +72,7 @@ const SettingsForm = () => {
 				<ButtonMD handleClick={save} type="action" hasNextButton={true} isMobileFull={true}>
 					Save
 				</ButtonMD>
-				<ButtonMD handleClick={cancel} type="control" isMobileFull={true}>
+				<ButtonMD handleClick={cancel} isMobileFull={true}>
 					Cancel
 				</ButtonMD>
 			</div>
