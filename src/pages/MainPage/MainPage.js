@@ -64,7 +64,6 @@ const MainPage = () => {
 					<>
 						<h1 className={styles.headerTitle}>philip1967/my-awesome-repo</h1>
 						<div className={styles.headerButtons}>
-							<ThemeSwitcher isLight={isLightTheme} handleClick={handleSwitchTheme} />
 							<ButtonSM icon={<BuildSvg />} handleClick={handleClick} hasNextButton>
 								Run Build
 							</ButtonSM>
@@ -77,9 +76,9 @@ const MainPage = () => {
 						<ButtonSM icon={<SettingsSvg />} handleClick={openSettingsPage}>
 							Settings
 						</ButtonSM>
-						<ThemeSwitcher isLight={isLightTheme} handleClick={handleSwitchTheme} />
 					</>
 				)}
+				<ThemeSwitcher isLight={isLightTheme} handleClick={handleSwitchTheme} />
 			</Header>
 			{isOpenModal && (
 				<Modal handleClose={handleCloseClick} handleSave={handleSaveClick} isLoading={isLoadingModal} />
