@@ -18,7 +18,7 @@ const MainPage = () => {
 	const isSettings = !localStorage.getItem('isEmpty');
 
 	const cardsPerPage = window.innerWidth <= 768 ? 6 : 9;
-	const [isLightTheme, setLightTheme] = useState(true);
+	const [isLightTheme, setLightTheme] = useState(document.body.className === 'theme-light');
 	const [isOpenModal, setOpenModal] = useState(false);
 	const [isLoadingModal, setLoadingModal] = useState(false);
 	const [showedCardsCount, setShowedCardsCount] = useState(cardsPerPage);
