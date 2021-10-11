@@ -1,3 +1,5 @@
+@import "@/themes";
+@import "@/mixins";
 @import "@/variables";
 
 .button {
@@ -12,7 +14,9 @@
   color: $text-default;
   border-radius: 5px;
   box-sizing: border-box;
-  background-color: $btn-cancel;
+  @include themify($themes) {
+    background-color: themed('buttonBackgroundDefault');
+  }
 
   &:hover {
     background-color: $btn-cancel-hover;
@@ -29,7 +33,9 @@
 }
 
 .action {
-  background-color: $btn-action;
+  @include themify($themes) {
+    background-color: themed('buttonBackgroundAction');
+  }
 
   &:hover {
     background-color: $btn-action-hover;
@@ -71,7 +77,6 @@
 
   @media (max-width: $mobile) {
     margin-bottom: 8px;
-    margin-right: 0;
   }
 }
 

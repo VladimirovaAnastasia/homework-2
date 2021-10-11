@@ -1,14 +1,18 @@
+@import "@/themes";
+@import "@/mixins";
 @import "@/variables";
 
 .buildCard {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background: #FFFFFF;
   box-shadow: 0px 0px 1px rgba(67, 68, 69, 0.3), 0px 1px 1px rgba(67, 68, 69, 0.3);
   border-radius: 6px;
   padding: 12px 24px;
   margin-bottom: 8px;
+  @include themify($themes) {
+    background: themed('backgroundCardColor');
+  }
 
   @media (max-width: $mobile) {
     flex-direction: column;
@@ -70,6 +74,12 @@
       width: 24px;
       height: 24px;
 
+      path {
+        @include themify($themes) {
+          color: themed('backgroundCardColor');
+        }
+      }
+
       @media (max-width: $mobile) {
         width: 16px;
         height: 16px;
@@ -121,6 +131,9 @@
   .branchName {
     &::before {
       content: url("./icons/code-commit.svg");
+      @include themify($themes) {
+        filter: themed('svgCardColor');
+      }
       position: relative;
       top: 3px;
       margin-right: 4px;
@@ -133,6 +146,9 @@
     flex-direction: column;
     justify-content: space-between;
     color: $text-minor;
+    @include themify($themes) {
+      color: themed('textMinorColor');
+    }
 
     @media (max-width: $mobile) {
       flex-direction: row;
@@ -150,6 +166,9 @@
 
     &::before {
       content: url("./icons/calendar.svg");
+      @include themify($themes) {
+        filter: themed('svgCardColor');
+      }
       position: relative;
       top: 3px;
       margin-right: 4px;
@@ -160,6 +179,9 @@
   .duration {
     &::before {
       content: url("./icons/stopwatch.svg");
+      @include themify($themes) {
+        filter: themed('svgCardColor');
+      }
       position: relative;
       top: 3px;
       margin-right: 4px;
@@ -176,6 +198,9 @@
 .commitAuthor {
   &::before {
     content: url("./icons/user.svg");
+    @include themify($themes) {
+      filter: themed('svgCardColor');
+    }
     position: relative;
     top: 3px;
     margin-right: 4px;
@@ -184,5 +209,7 @@
 }
 
 .commitHash {
-  color: $text-minor;
+  @include themify($themes) {
+    color: themed('textMinorColor');
+  }
 }

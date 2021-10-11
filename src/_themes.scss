@@ -1,0 +1,27 @@
+@import "variables";
+
+$themes: (
+        light: (
+                backgroundColor: $light,
+                textColor: $text-default,
+                textMinorColor: $text-minor,
+                inputTextColor: $light,
+                buttonBackgroundDefault: $btn-cancel,
+                buttonBackgroundAction: $btn-action,
+                backgroundCardColor: $light,
+                backgroundModalColor: $light,
+                backgroundFooterColor: $footer-bg,
+        ),
+        dark: (
+                backgroundColor: #222,
+                textColor: $light-yellow,
+                textMinorColor: $light-yellow,
+                inputTextColor: $light-yellow,
+                buttonBackgroundDefault: $light-yellow,
+                buttonBackgroundAction: $btn-action,
+                backgroundCardColor: $dark,
+                svgCardColor: invert(100%),
+                backgroundModalColor: #daa520,
+                backgroundFooterColor: $dark,
+        ),
+);

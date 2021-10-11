@@ -6,13 +6,15 @@ import {NotFoundPage} from './pages/NotFoundPage';
 import {Footer} from './components/Footer';
 import {LINKS} from './const';
 
+import styles from './App.module.scss';
+
 function App() {
 	return (
 		<BrowserRouter>
 			<Switch>
 				<Route path="/404" component={NotFoundPage} />
 				<Route>
-					<div className="container">
+					<div className={styles.container}>
 						<Switch>
 							<Route path="/" component={MainPage} exact />
 							<Route path="/settings" component={SettingsPage} />
