@@ -5,13 +5,12 @@ import {BuildCard} from './components/BuildCard';
 import ButtonSM from '@/components/Button/ButtonSM';
 import {ReactComponent as SettingsSvg} from '@/assets/icons/settings.svg';
 import {ReactComponent as BuildSvg} from '@/assets/icons/play.svg';
-import {ReactComponent as Lamp} from '@/assets/icons/lightbulb.svg';
 import {Header} from '@/components/Header';
 import {Modal} from '@/components/Modal';
 import {ThemeSwitcher} from '@/components/ThemeSwitcher';
 
 import styles from './MainPage.module.scss';
-import {doc} from 'prettier';
+
 
 const buildCards = [
 	{
