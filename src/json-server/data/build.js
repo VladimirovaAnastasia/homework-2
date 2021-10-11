@@ -5,6 +5,6 @@ module.exports = {
 	branch: 'master',
 	hash: 'f2f5g5',
 	author: 'Philip Kirkorov',
-	date: '21 янв, 03:06',
+	date: Date.now(),
 	duration: '1 ч 30 мин',
 };

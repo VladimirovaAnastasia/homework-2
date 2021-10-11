@@ -100,6 +100,9 @@ const SettingsForm = () => {
 					Save
 				</ButtonMD>
 				<ButtonMD handleClick={cancel} isMobileFull={true}>
+					{' '}
+					Отмена
+				</ButtonMD>
 			</div>
 		</div>
 	);

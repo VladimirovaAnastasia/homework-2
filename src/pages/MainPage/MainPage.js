@@ -98,7 +98,7 @@ const MainPage = () => {
 				<div className={styles.mainPage}>
 					{buildCards.map(
 						(buildCard, index) =>
-							index < showedCardsCount && <BuildCard key={buildCard + index} data={buildCard} />
+							index < showedCardsCount && <BuildCard key={buildCard + index} build={buildCard} />
 					)}
 					{buildCards.length > showedCardsCount && (
 						<div className={styles.showMoreButton}>
