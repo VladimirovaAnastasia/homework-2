@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {LabelText} from '../LabelText';
 import {ButtonMD} from '../Button';
@@ -19,8 +19,29 @@ const Modal = ({handleSave, handleClose, isLoading}) => {
 		}
 	};
 
+	const handleUserKeyPress = (event) => {
+		if (event.keyCode === 27) {
+			handleClose();
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener('keydown', handleUserKeyPress);
+		return () => {
+			document.removeEventListener('keydown', handleUserKeyPress);
+		};
+	}, []);
+
+	let modalContainer = React.createRef();
+
+	const handleModalContainerClick = (event) => {
+		if (modalContainer.current === event.target) {
+			handleClose();
+		}
+	};
+
 	return ReactDOM.createPortal(
-		<div className={styles.modalContainer}>
+		<div className={styles.modalContainer} onClick={handleModalContainerClick} ref={modalContainer}>
 			<div className={styles.Modal}>
 				<LabelText
 					label="New build"
