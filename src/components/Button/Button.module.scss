@@ -90,5 +90,7 @@
 }
 
 .mobileHide {
-  display: none;
+  @media (max-width: $mobile) {
+    display: none;
+  }
 }
