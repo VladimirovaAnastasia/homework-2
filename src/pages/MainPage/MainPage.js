@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import classNames from 'classnames';
 import {EmptySettings} from './components/EmptySettings';
 import {BuildCard} from './components/BuildCard';
 import ButtonSM from '@/components/Button/ButtonSM';
@@ -72,7 +73,7 @@ const MainPage = () => {
 					</>
 				) : (
 					<>
-						<h1>School CI server</h1>
+						<h1 className={classNames(styles.headerTitle, styles.headerTitleEmpty)}>School CI server</h1>
 						<ButtonSM icon={<SettingsSvg />} handleClick={openSettingsPage}>
 							Settings
 						</ButtonSM>
