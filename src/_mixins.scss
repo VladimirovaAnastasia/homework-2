@@ -3,13 +3,14 @@
 @mixin wrapper {
   & {
     max-width: 904px;
-    min-width: 368px;
+    min-width: 288px;
     padding: 0 40px;
     width: 100%;
     margin: 0 auto;
 
     @media (max-width: $mobile) {
-      max-width: 368px;
+      padding: 0;
+      max-width: 288px;
     }
   }
 }
