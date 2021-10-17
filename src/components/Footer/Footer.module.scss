@@ -3,7 +3,9 @@
 @import "@/variables";
 
 .footerContainer {
+  margin-top: 20px;
   @include themify($themes) {
+    margin-top: 8px;
     background-color: themed('backgroundFooterColor');
   }
 }
