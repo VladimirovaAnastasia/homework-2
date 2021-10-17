@@ -153,7 +153,8 @@
     @media (max-width: $mobile) {
       flex-direction: row;
       justify-content: flex-start;
-      padding: 8px 0 0 24px;
+      padding-top: 8px;
+      margin-left: 24px;
       border-top: 1px #F0F2F3 solid;
     }
   }
