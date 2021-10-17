@@ -10,7 +10,6 @@ import {ReactComponent as BuildSvg} from '@/assets/icons/play.svg';
 import {Header} from '@/components/Header';
 import {Modal} from '@/components/Modal';
 import {ThemeSwitcher} from '@/components/ThemeSwitcher';
-import {BUILDS} from '@/const';
 import {fetchBuilds, runBuild} from '@/store/actions/builds';
 import {Loader} from '../../components/Loader';
 import {Error} from '../../components/Error';
