@@ -24,6 +24,7 @@
 }
 
 .text {
+  margin-top: 0;
   margin-bottom: 24px;
   text-align: center;
   @include themify($themes) {

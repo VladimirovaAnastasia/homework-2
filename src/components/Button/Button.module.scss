@@ -48,6 +48,7 @@
 }
 
 .disabled {
+  cursor: not-allowed;
   @include themify($themes) {
     background-color: themed('buttonBackgroundDisabled');
     color: themed('buttonTextDisabled');
@@ -59,12 +60,12 @@
 }
 
 .small {
-  padding: 0 8px;
+  padding: 0 6px;
   height: 28px;
 }
 
 .medium {
-  padding: 0 20px;
+  padding: 0 18px;
   height: 36px;
 }
 
@@ -89,5 +90,7 @@
 }
 
 .mobileHide {
-  display: none;
+  @media (max-width: $mobile) {
+    display: none;
+  }
 }

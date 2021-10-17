@@ -28,9 +28,11 @@ const Modal = ({handleSave, handleClose, isLoading}) => {
 	};
 
 	useEffect(() => {
+		document.body.style.overflow = 'hidden';
 		document.addEventListener('keydown', handleUserKeyPress);
 		return () => {
 			document.removeEventListener('keydown', handleUserKeyPress);
+			document.body.style.overflow = 'unset';
 		};
 	}, []);
 

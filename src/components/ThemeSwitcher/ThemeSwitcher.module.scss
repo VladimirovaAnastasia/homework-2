@@ -1,5 +1,11 @@
+@import "@/variables";
+
 .icon {
   position: absolute;
-  right: 0;
+  right: -35px;
   cursor: pointer;
+
+  @media (max-width: 400px) {
+    display: none;
+  }
 }

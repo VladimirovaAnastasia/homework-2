@@ -4,9 +4,13 @@ import classNames from 'classnames';
 import styles from './Button.module.scss';
 
 const Button = ({children, type, handleClick, size, icon, hasNextButton, isMobileFull, isLoading, ...attributes}) => {
+	const handleButtonClick = () => {
+		!isLoading && handleClick();
+	};
+
 	return (
 		<button
-			onClick={handleClick}
+			onClick={handleButtonClick}
 			className={classNames(
 				styles.button,
 				{[styles.marginRight]: hasNextButton},
