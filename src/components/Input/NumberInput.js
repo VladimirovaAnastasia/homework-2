@@ -7,9 +7,10 @@ const pattern = /\D/g;
 
 const NumberInput = ({value, handleChange, width, unit, placeholder, maxLength}) => {
 	const handleNumberInputChange = (value) => {
-		if (!pattern.test(value)) {
-			handleChange(value);
+		if (value.match(pattern)) {
+			return;
 		}
+		handleChange(value);
 	};
 
 	return (
