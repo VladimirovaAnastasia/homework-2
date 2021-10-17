@@ -10,12 +10,11 @@
 
 .settingsPageTitle {
   color: $text-minor;
-  margin: 10px 0;
+  margin: 0;
   font-size: 24px;
   line-height: 28px;
 
   @media (max-width: $mobile) {
-    margin: 12px 0;
     font-size: 18px;
   }
 }
