@@ -28,9 +28,11 @@ const SettingsForm = () => {
 		setLoading(true);
 		if (!repository.isEmpty && !command.isEmpty) {
 			setTimeout(() => {
-				setLoading(false);
 				openMainPage();
+				setLoading(false);
 			}, 1000);
+		} else {
+			setLoading(false);
 		}
 	};
 
