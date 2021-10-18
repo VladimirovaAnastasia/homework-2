@@ -9,7 +9,7 @@
   box-shadow: 0px 0px 1px rgba(67, 68, 69, 0.3), 0px 1px 1px rgba(67, 68, 69, 0.3);
   border-radius: 6px;
   padding: 12px 24px;
-  margin-bottom: 8px;
+  margin-top: 8px;
   @include themify($themes) {
     background: themed('backgroundCardColor');
   }

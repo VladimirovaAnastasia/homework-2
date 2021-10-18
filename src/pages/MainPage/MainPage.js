@@ -28,11 +28,7 @@ const MainPage = () => {
 	const [isOpenModal, setOpenModal] = useState(false);
 	const [showedCardsCount, setShowedCardsCount] = useState(cardsPerPage);
 
-	const handleClick = () => {
-		setOpenModal((prev) => !prev);
-	};
-
-	const handleCloseClick = () => {
+	const handleOpenModal = () => {
 		setOpenModal((prev) => !prev);
 	};
 
@@ -75,7 +71,7 @@ const MainPage = () => {
 					<>
 						<h1 className={styles.headerTitle}>{repository}</h1>
 						<div className={styles.headerButtons}>
-							<ButtonSM icon={<BuildSvg />} handleClick={handleClick} hasNextButton>
+							<ButtonSM icon={<BuildSvg />} handleClick={handleOpenModal} hasNextButton>
 								Run Build
 							</ButtonSM>
 							<ButtonSM icon={<SettingsSvg />} handleClick={openSettingsPage} />
@@ -91,7 +87,9 @@ const MainPage = () => {
 				)}
 				<ThemeSwitcher isLight={isLightTheme} handleClick={handleSwitchTheme} />
 			</Header>
-			{isOpenModal && <Modal handleClose={handleCloseClick} handleSave={handleSaveClick} isLoading={isLoading} />}
+			{isOpenModal && (
+				<Modal handleClose={handleOpenModal} handleSave={handleSaveClick} isLoading={isLoading} />
+			)}
 
 			{repository && buildCards.length > 0 ? (
 				<div className={styles.mainPage}>
