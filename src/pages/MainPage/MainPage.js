@@ -24,10 +24,6 @@ const MainPage = () => {
 	const [isLoadingModal, setLoadingModal] = useState(false);
 	const [showedCardsCount, setShowedCardsCount] = useState(cardsPerPage);
 
-	const handleClick = () => {
-		setOpenModal((prev) => !prev);
-	};
-
 	const handleCloseClick = () => {
 		setOpenModal((prev) => !prev);
 	};
