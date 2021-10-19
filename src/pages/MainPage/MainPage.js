@@ -50,10 +50,6 @@ const MainPage = () => {
 		return <Error />;
 	}
 
-	if (isLoading && !isOpenModal) {
-		return <Loader />;
-	}
-
 	const handleSwitchTheme = () => {
 		if (!isLightTheme) {
 			document.body.className = 'theme-light';
@@ -87,9 +83,7 @@ const MainPage = () => {
 				)}
 				<ThemeSwitcher isLight={isLightTheme} handleClick={handleSwitchTheme} />
 			</Header>
-			{isOpenModal && (
-				<Modal handleClose={handleOpenModal} handleSave={handleSaveClick} isLoading={isLoading} />
-			)}
+			{isOpenModal && <Modal handleClose={handleOpenModal} handleSave={handleSaveClick} isLoading={isLoading} />}
 
 			{repository && buildCards.length > 0 ? (
 				<div className={styles.mainPage}>
@@ -108,6 +102,8 @@ const MainPage = () => {
 			) : (
 				<EmptySettings />
 			)}
+
+			{isLoading && !isOpenModal && <Loader isContainer />}
 		</>
 	);
 };
